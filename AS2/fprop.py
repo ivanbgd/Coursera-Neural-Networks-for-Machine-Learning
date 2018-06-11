@@ -55,10 +55,10 @@ def fprop(input_batch, word_embedding_weights, embed_to_hid_weights, hid_to_outp
     # FILL IN CODE. Replace the line below by one of the options.
     #hidden_layer_state = np.zeros(numhid2, batchsize)
     # Options
-    # (a) hidden_layer_state = 1. / (1 + np.exp(inputs_to_hidden_units))
-    # (b) hidden_layer_state = 1. / (1 - np.exp(-inputs_to_hidden_units))
+    # (a) hidden_layer_state = 1. / (1. + np.exp(inputs_to_hidden_units))
+    # (b) hidden_layer_state = 1. / (1. - np.exp(-inputs_to_hidden_units))
     # (c) hidden_layer_state = 1. / (1. + np.exp(-inputs_to_hidden_units))
-    # (d) hidden_layer_state = -1. / (1 + np.exp(-inputs_to_hidden_units))
+    # (d) hidden_layer_state = -1. / (1. + np.exp(-inputs_to_hidden_units))
     #print("hidden_layer_state:", hidden_layer_state.shape)        # (200, 100)
 
     ## COMPUTE STATE OF OUTPUT LAYER.
@@ -91,3 +91,4 @@ def fprop(input_batch, word_embedding_weights, embed_to_hid_weights, hid_to_outp
     #print("output_layer_state:", output_layer_state.shape)          # (250, 100)
 
     return embedding_layer_state, hidden_layer_state, output_layer_state
+
