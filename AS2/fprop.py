@@ -55,10 +55,10 @@ def fprop(input_batch, word_embedding_weights, embed_to_hid_weights, hid_to_outp
     # FILL IN CODE. Replace the line below by one of the options.
     #hidden_layer_state = np.zeros(numhid2, batchsize)
     # Options
-    # (a) hidden_layer_state = 1 ./ (1 + exp(inputs_to_hidden_units));
-    # (b) hidden_layer_state = 1 ./ (1 - exp(-inputs_to_hidden_units));
-    # (c) hidden_layer_state = 1 ./ (1. + exp(-inputs_to_hidden_units));
-    # (d) hidden_layer_state = -1 ./ (1 + exp(-inputs_to_hidden_units));
+    # (a) hidden_layer_state = 1. / (1 + np.exp(inputs_to_hidden_units))
+    # (b) hidden_layer_state = 1. / (1 - np.exp(-inputs_to_hidden_units))
+    # (c) hidden_layer_state = 1. / (1. + np.exp(-inputs_to_hidden_units))
+    # (d) hidden_layer_state = -1. / (1 + np.exp(-inputs_to_hidden_units))
     #print("hidden_layer_state:", hidden_layer_state.shape)        # (200, 100)
 
     ## COMPUTE STATE OF OUTPUT LAYER.
@@ -66,10 +66,10 @@ def fprop(input_batch, word_embedding_weights, embed_to_hid_weights, hid_to_outp
     # FILL IN CODE. Replace the line below by one of the options.
     #inputs_to_softmax = np.zeros(vocab_size, batchsize)
     # Options
-    # (a) inputs_to_softmax = hid_to_output_weights' * hidden_layer_state +  repmat(output_bias, 1, batchsize);
-    # (b) inputs_to_softmax = hid_to_output_weights' * hidden_layer_state +  repmat(output_bias, batchsize, 1);
-    # (c) inputs_to_softmax = hidden_layer_state * hid_to_output_weights' +  repmat(output_bias, 1, batchsize);
-    # (d) inputs_to_softmax = hid_to_output_weights * hidden_layer_state +  repmat(output_bias, batchsize, 1);
+    # (a) inputs_to_softmax = np.dot(hid_to_output_weights.T, hidden_layer_state) + np.tile(output_bias, (1, batchsize))
+    # (b) inputs_to_softmax = np.dot(hid_to_output_weights.T, hidden_layer_state) + np.tile(output_bias, (batchsize, 1))
+    # (c) inputs_to_softmax = np.dot(hidden_layer_state, hid_to_output_weights.T) + np.tile(output_bias, (1, batchsize))
+    # (d) inputs_to_softmax = np.dot(hid_to_output_weights, hidden_layer_state) + np.tile(output_bias, (batchsize, 1))
     #print("inputs_to_softmax:", inputs_to_softmax.shape)      # (250, 100)
 
     # Subtract maximum. 
