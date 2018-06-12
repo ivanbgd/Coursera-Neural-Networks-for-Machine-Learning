@@ -1,4 +1,4 @@
-# Coursera Neural Networks for Machine Learning
+# Coursera Neural Networks for Machine Learning by Geoffrey Hinton
 
 This repository contains starter code for programming assignments in Python.
 
